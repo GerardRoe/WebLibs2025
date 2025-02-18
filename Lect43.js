@@ -64,6 +64,6 @@ svg.append("g")
 
 
 // svg.append("g")
-//   .attr("transform", `translate(50, 0)`) // Move to left
+//   .attr("transform", `translate(50, 0)`)
 //   .call(d3.axisLeft(yScale));
 
