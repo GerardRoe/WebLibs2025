@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events</title>
+  </head>
+  <body>
+    <h1>JavaScript event handling</h1>
+    <button>Click me</button>
+
+    <div>
+      <input type="radio" name="subject" id="Irish" />Irish<br />
+      <input type="radio" name="subject" id="French" />French<br />
+      <input type="radio" name="subject" id="spanish" />Spanish<br />
+    </div>
+    <div>
+      <input type="checkbox" name="myCheckBox" checked />
+      <label for="myCheckBox">Option 1</label>
+      <input type="checkbox" name="myCheckBox2" checked />
+      <label for="myCheckBox2">Option 2</label>
+    </div>
+
+    <br />
+    <input type="file" name="demo" />    <br /><br />
+    <input type="number" name="age" value="19" /><br /><br />
+    <input type="range" name="percent" min="1" max="100" />
+    <br />
+    <select>
+      <option value="red">Red</option>
+      <option value="green">Green</option>
+      <option value="yellow">OYellow</option>
+      <option value="blue">Blue</option>
+    </select>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelector("button").addEventListener("click", () => {
+          console.log("Button clicked!");
+        });
+
+        document.querySelectorAll("input[type='radio'][name='subject']")
+          .forEach((radio) => {
+            radio.addEventListener("change",()  => {
+              console.log(`Selected subject: ${this.id}`);
+            });
+          });
+
+        document.querySelector("input[type='file']").addEventListener("change",  function() {
+            console.log(  this.files.length > 0
+                ? `Selected file: ${this.files[0].name}`
+                : "No file selected"
+            );
+          });
+      
+        document.querySelector("input[type='number']").addEventListener("input",  function()  {
+            console.log(`your age is now: ${this.value}`);
+          });
+
+        document.querySelector("input[type='range']").addEventListener("input",  function()  {
+            console.log(`Range changed to: ${this.value}`);
+          });
+
+        document.querySelector("select")
+          .addEventListener("change",  () => {
+            console.log(`Selected color: ${this.value}`);
+          });
+      });
+
+      document.querySelectorAll("input[type='checkbox']")
+          .forEach((checkbox) => {
+            checkbox.addEventListener("change", function () {
+              console.log(
+                `${this.nextElementSibling.textContent} is now ${
+                  this.checked ? "checked" : "unchecked"
+                }`
+              );
+            });
+          });
+    </script>
+  </body>
+</html>
